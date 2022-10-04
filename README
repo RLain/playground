@@ -10,3 +10,8 @@ Understanding promise responses and error handling when using the axios HTTP cli
 
 URL: https://axios-http.com/docs/intro
 
+#### Notable things:
+
+1. then/catch returns undefined
+2. try/catch returns [object Promise]
+
