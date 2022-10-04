@@ -5,7 +5,7 @@ require('dotenv').config();
 const BAD_REQUEST = process.env.URL_400
 const OK_REQUEST = process.env.URL_200
 
-//🐦 Function to test then/catch responses
+//🐦 Function to test axios then/catch responses
 const checkHTTPResponse = () => {
 axios.get(BAD_REQUEST)
 .then(response => {
@@ -16,8 +16,8 @@ axios.get(BAD_REQUEST)
 .catch(error => {
     //⛔️ This section will execute if an error is caught including HTTP Server side issues 4XX/5XX
     console.log(error) //Returns full error response = see below rows 247-536
-    // console.log(error.response.status) //Returns HTTP code e.g. 400
-    // console.log(error.response.statusText) //Returns HTTP response e.g. Bad Request
+    console.log(error.response.status) //Returns HTTP code e.g. 400
+    console.log(error.response.statusText) //Returns HTTP response e.g. Bad Request
     return error  
 })
 }

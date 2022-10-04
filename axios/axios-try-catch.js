@@ -5,19 +5,22 @@ require('dotenv').config();
 const BAD_REQUEST = process.env.URL_400
 const OK_REQUEST = process.env.URL_200
 
-//🐦 Function to test then/catch responses
+//🐦 Function to test axios try/catch responses
 const checkHTTPResponse = async () => {
 try {
     const response = await axios.get(BAD_REQUEST)
+
+    //✅ The following will only execute if a 200-299 is returned
     console.log(response); //Returns = see below rows 28-244
-    console.log("Success")
+    console.log(response.data) //Returns the data object the API will return
     return response 
+
 } catch(error) {
-    // console.log(error)
-    console.log("Oh no an error")
-    const errorOutput = error
-    console.log(errorOutput) //Returns = see below rows 247-536
-    return errorOutput  
+    //⛔️ This section will execute if an error is caught including HTTP Server side issues 4XX/5XX
+    console.log(error) //Returns full error response = see below rows 247-536
+    console.log(error.response.status) //Returns HTTP code e.g. 400
+    console.log(error.response.statusText) //Returns HTTP response e.g. Bad Request
+    return error  
 }
 }
 
@@ -244,7 +247,7 @@ console.log('executeGet' + executeGet) //Returns [object Promise]
 // }
 
 
-//⛔️  The console.log(errorOutput) in the error path returns the following:
+//⛔️  The console.log(error) in the error path returns the following:
 // [AxiosError: Request failed with status code 400] {
 //     code: 'ERR_BAD_REQUEST',
 //     config: {
