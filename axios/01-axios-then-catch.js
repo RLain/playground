@@ -9,6 +9,7 @@ const OK_REQUEST = process.env.URL_200
 const checkHTTPResponse = () => {
 axios.get(BAD_REQUEST)
 .then(response => {
+    //✅ The following will only execute if a 200-299 is returned
     console.log(response) //Returns = see below rows 28-244
     console.log(response.data); //Returns the data object the API will return
     return response 

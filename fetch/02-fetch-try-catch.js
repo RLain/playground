@@ -10,20 +10,43 @@ const checkHTTPResponse = async () => {
 try {
     const response = await fetch(BAD_REQUEST)
 
-    //✅ The following will only execute if a 200-299 is returned
-    console.log(response); //Returns = see below rows 28-244
-    console.log(response.data) //Returns the data object the API will return
+    //😱 The following will execute for all server side responses
+    console.log(response); //Returns = see below rows 27-52
     return response 
 
 } catch(error) {
-    //⛔️ This section will execute if an error is caught including HTTP Server side issues 4XX/5XX
-    const errorOutput = error
-    console.log(errorOutput) //Returns full error response = see below rows 247-536
-    console.log(errorOutput.response.status) //Returns HTTP code e.g. 400
-    console.log(errorOutput.response.statusText) //Returns HTTP response e.g. Bad Request
-    return errorOutput  
+    //This section won't invoke for 4XX and 5XX issues unless a custom function is written. 
+    //Only network issues client side.
 }
 }
 
 const executeGet = checkHTTPResponse();
 console.log('executeGet' + executeGet) //Returns [object Promise]
+
+
+//😱  The console.log(response) returns the following
+// Response {
+//     size: 0,
+//     timeout: 0,
+//     [Symbol(Body internals)]: {
+//       body: PassThrough {
+//         _readableState: [ReadableState],
+//         _events: [Object: null prototype],
+//         _eventsCount: 2,
+//         _maxListeners: undefined,
+//         _writableState: [WritableState],
+//         allowHalfOpen: true,
+//         [Symbol(kCapture)]: false,
+//         [Symbol(kTransformState)]: [Object]
+//       },
+//       disturbed: false,
+//       error: null
+//     },
+//     [Symbol(Response internals)]: {
+//       url: 'https://a8u974q43l.execute-api.af-south-1.amazonaws.com/400',
+//       status: 400,
+//       statusText: 'Bad Request',
+//       headers: Headers { [Symbol(map)]: [Object: null prototype] },
+//       counter: 0
+//     }
+//   }
