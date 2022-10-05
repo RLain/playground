@@ -8,7 +8,7 @@ const OK_REQUEST = process.env.URL_200
 //🐦 Function to test axios try/catch responses
 const checkHTTPResponse = async () => {
 try {
-    const response = await axios.get(BAD_REQUEST)
+    const response = await axios.get(OK_REQUEST)
 
     //✅ The following will only execute if a 200-299 is returned
     console.log(response); //Returns = see below rows 28-244
