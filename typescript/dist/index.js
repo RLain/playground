@@ -22,34 +22,34 @@ let random = [1, "Apple", true]; //Can define specific types in the array positi
 let employee;
 //Will allow the following data structure [number, string] elements nested within an array
 employee = [
-    [1, "Becca"],
-    [2, "Royden"],
-    [3, "Dionne"],
-    //[true, "Hello"], Not allowed due to Type 'boolean' is not assignable to type 'number'.
+  [1, "Becca"],
+  [2, "Royden"],
+  [3, "Dionne"],
+  //[true, "Hello"], Not allowed due to Type 'boolean' is not assignable to type 'number'.
 ];
 // 4️⃣ Union
 let productId; //Allows productID to be either a string or number
 // 5️⃣ Enum
 var Direction1;
 (function (Direction1) {
-    Direction1[Direction1["Up"] = 0] = "Up";
-    Direction1[Direction1["Down"] = 1] = "Down";
-    Direction1[Direction1["Left"] = 2] = "Left";
-    Direction1[Direction1["Right"] = 3] = "Right";
+  Direction1[(Direction1["Up"] = 0)] = "Up";
+  Direction1[(Direction1["Down"] = 1)] = "Down";
+  Direction1[(Direction1["Left"] = 2)] = "Left";
+  Direction1[(Direction1["Right"] = 3)] = "Right";
 })(Direction1 || (Direction1 = {}));
 console.log(Direction1.Left);
 var Direction2;
 (function (Direction2) {
-    Direction2["Up"] = "Up";
-    Direction2["Down"] = "Down";
-    Direction2["Left"] = "Left";
-    Direction2["Right"] = "Right";
+  Direction2["Up"] = "Up";
+  Direction2["Down"] = "Down";
+  Direction2["Left"] = "Left";
+  Direction2["Right"] = "Right";
 })(Direction2 || (Direction2 = {}));
 console.log(Direction2.Left);
 // 6️⃣ Objects
 const user = {
-    id: 42,
-    name: "Gandalf",
+  id: 42,
+  name: "Gandalf",
 };
 //Will return Type 'string' is not assignable to type 'number'.
 // const userBroken: {
@@ -70,24 +70,24 @@ let customerId = custId; // or let customerId = custId as number = Both work the
 // };
 //Defining the argument type:
 const addNumberAgain = (x, y) => {
-    return x + y;
+  return x + y;
 };
 const messageFunction = (message) => {
-    console.log(message);
+  console.log(message);
 };
 messageFunction(1);
 messageFunction("hey");
 const userNew = {
-    id: 1,
-    name: "Becca",
+  id: 1,
+  name: "Becca",
 };
 const userNewAgain = {
-    id: 1,
-    name: "Becca",
+  id: 1,
+  name: "Becca",
 };
 const userNewMore = {
-    id: 1,
-    name: "Becca",
+  id: 1,
+  name: "Becca",
 };
 //This is allowed
 const add = (x, y) => x + y;
@@ -97,72 +97,72 @@ const sub = (x, y) => x - y;
 //🔟 Classes
 //a. Setting up classes:
 class Person {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
 }
 const becca = new Person(1, "Becca Lain");
 console.log(becca);
 //b. Making properties private
 class Person2 {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
 }
 const becca2 = new Person2(1, "Becca Lain");
 //This failes due to the private declaration and returns Property 'id' is private and only accessible within class 'Person2
 //console.log(becca2.id);
 //c. Making properties protected
 class Person3 {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
 }
 const becca3 = new Person3(1, "Becca Lain");
 //This failes due to the private declaration and returns Property 'id' is protected and only accessible within class 'Person3' and its subclasses.
 //console.log(becca3.id);
 //d. Adding methods to the class
 class Person4 {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
-    //This adds a custom method:
-    register() {
-        return `${this.name} is now registered`;
-    }
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  //This adds a custom method:
+  register() {
+    return `${this.name} is now registered`;
+  }
 }
 const becca4 = new Person4(1, "Becca Lain");
 console.log(becca4.register());
 class Person5 {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-    }
-    //This adds a custom method:
-    register() {
-        return `${this.name} is now registered`;
-    }
+  constructor(id, name) {
+    this.id = id;
+    this.name = name;
+  }
+  //This adds a custom method:
+  register() {
+    return `${this.name} is now registered`;
+  }
 }
 const becca5 = new Person5(1, "Becca Lain");
 console.log(becca5.register());
 //f. Extending classes using sub classes
 //This is a sub class:
 class Employee extends Person5 {
-    constructor(id, name, role) {
-        super(id, name); //Replaces the need to redefine these e.g. this.id = id, this.name = name etc
-        this.role = role;
-    }
+  constructor(id, name, role) {
+    super(id, name); //Replaces the need to redefine these e.g. this.id = id, this.name = name etc
+    this.role = role;
+  }
 }
 const newEmployee = new Employee(3, "Rodney", "Solution Engineer");
 console.log(newEmployee.register()); //We can invoke the register() method as it is defined in the Person5 class that this sub-class is extending
 //1️⃣1️⃣ Generics
 //a. Defining types in functions when using arrays
 const getArray = (items) => {
-    return new Array().concat(items);
+  return new Array().concat(items);
 };
 let numberArray = getArray([1, 2, 3, 4]);
 let stringArray = getArray(["apple", "banana", "carrot", "dragonfruit"]);
@@ -170,15 +170,10 @@ let stringArray = getArray(["apple", "banana", "carrot", "dragonfruit"]);
 numberArray.push("egg");
 //b. Making the function generic types but specifying types when calling the function
 const getArray2 = (items) => {
-    return new Array().concat(items);
+  return new Array().concat(items);
 };
 let numberArray2 = getArray2([1, 2, 3, 4]);
-let stringArray2 = getArray2([
-    "apple",
-    "banana",
-    "carrot",
-    "dragonfruit",
-]);
+let stringArray2 = getArray2(["apple", "banana", "carrot", "dragonfruit"]);
 //This is no longer allowed as the numberArray2 has specified the type of number and will return  Argument of type 'string' is not assignable to parameter of type 'number'.
 //numberArray2.push("egg");
 //1️⃣2️⃣ Using TypeScript with React
