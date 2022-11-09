@@ -14,8 +14,11 @@ then use the CTRL + CMD + N command to execute.
 1. Defining types is `optional`. You can have a .ts file with vanilla javascript in.
 2. Can be `used for both front-end and backend` with node.js.
 3. Main value of Typescript > Javascript is the `ability to add static types`.
+
    a. Dynamically typed languages have types associated with run time values that are no explictly named in your code. e.g. Javascript, Python, Rub, PHP
+
    b. Statically typed languages you explictly define types to variable, function parameters, return values etc. e.g. Java, C, C++, Rust, Go.
+
 4. `Pros` of Typescript: Code more robust, debugging easier, predictable, readability
 5. `Cons` of Typescript: More code to write, more to learn, compilation required (browsers don't read .ts files. Needs to compile to .js), not a true static language due to compilation to .js
 6. `TSC` (TypeScript compiler) is used to compile .ts files to Javascript. To install $ `sudo npm i -g typescript`. To check version: $ `tsc -v`
