@@ -11,6 +11,21 @@ then use the CTRL + CMD + N command to execute.
 
 #### Notable things:
 
+1. Defining types is `optional`. You can have a .ts file with vanilla javascript in.
+2. Can be `used for both front-end and backend` with node.js.
+3. Main value of Typescript > Javascript is the `ability to add static types`.
+   a. Dynamically typed languages have types associated with run time values that are no explictly named in your code. e.g. Javascript, Python, Rub, PHP
+   b. Statically typed languages you explictly define types to variable, function parameters, return values etc. e.g. Java, C, C++, Rust, Go.
+4. `Pros` of Typescript: Code more robust, debugging easier, predictable, readability
+5. `Cons` of Typescript: More code to write, more to learn, compilation required (browsers don't read .ts files. Needs to compile to .js), not a true static language due to compilation to .js
+6. `TSC` (TypeScript compiler) is used to compile .ts files to Javascript. To install $ `sudo npm i -g typescript`. To check version: $ `tsc -v`
+7. To compile a specific .ts file, cd into the directory with the file and then run $ `tsc {{file_name}}` e.g. `tsc index`. This will then create an index.js file which defaults to ES5 which uses var instead of const/let. This can be changed in the tsconfig.json file. To run all .ts files in the directory simply run $ `tsc`.
+8. To watch a file run $ `tsc --watch {{file_name}}` e.g. `tsc --watch index` to continally watch the ts compilation as changes are made to a file.
+9. To create a `tsconfig.json` file run $ `tsc --init`. This file is massive and most on the information not important to understand. To change the default Javascript setting update target to ES6 e.g. `"target": "es2016"` --> `"target": "es6",`. This will then compile the .js file with const/let.
+10. To create separate source code vs production code, create separate directories eg. /src and /dist respectively. Then on the `tsconfig.json` file update the following:
+    a. "rootDirs": ["./src"] to inform the compiler when to find the .ts code
+    b. "outDir": "./dist" to specify where to store the .js outputs
+
 #### Things to clarify:
 
 #### Additional reading:
