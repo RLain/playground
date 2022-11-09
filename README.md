@@ -23,8 +23,10 @@ then use the CTRL + CMD + N command to execute.
 8. To watch a file run $ `tsc --watch {{file_name}}` e.g. `tsc --watch index` to continally watch the ts compilation as changes are made to a file.
 9. To create a `tsconfig.json` file run $ `tsc --init`. This file is massive and most on the information not important to understand. To change the default Javascript setting update target to ES6 e.g. `"target": "es2016"` --> `"target": "es6",`. This will then compile the .js file with const/let.
 10. To create separate source code vs production code, create separate directories eg. /src and /dist respectively. Then on the `tsconfig.json` file update the following:
-    a. "rootDirs": ["./src"] to inform the compiler when to find the .ts code
-    b. "outDir": "./dist" to specify where to store the .js outputs
+
+    a. `"rootDirs": ["./src"]` to inform the compiler when to find the .ts code
+
+    b. `"outDir": "./dist"` to specify where to store the .js outputs
 
 #### Things to clarify:
 
