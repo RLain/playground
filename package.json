@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/RLain/playground#readme",
   "dependencies": {
+    "assert": "^2.0.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.3",
     "fetch": "^1.1.0",
+    "git-diff": "^2.0.6",
     "node-fetch": "^2.6.1"
   }
 }
