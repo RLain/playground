@@ -10,7 +10,7 @@ dotenv.config();
  * @param {string} api_key Either a Sandbox or Production api key. Stored on a env.js file not saved on Github.
  * @return {object} The response from the API request
  */
-const mainRootAPIRequest = async (uri, method, data, api_key) => {
+const mainAPIRequest = async (uri, method, data, api_key) => {
   let response;
   if (method === "GET") {
     response = await fetch(`${uri}`, {
