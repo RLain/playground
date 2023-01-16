@@ -5,6 +5,35 @@ export const { expect } = chai;
 import sinon from "sinon";
 import request from "request";
 
+//________________________________________________
+// Basic Sinon testing: Stubbing date value
+
+const greet = (name) => {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString("en-US", options);
+  return `Hello, ${name}! Today is ${formattedDate}`;
+};
+
+describe("testing the greeter", function () {
+  it("checks the greet function", function () {
+    const clock = sinon.useFakeTimers(new Date(2021, 0, 15));
+    assert.equal(
+      greet("Alice"),
+      "Hello, Alice! Today is Friday, January 15, 2021"
+    );
+    clock.restore();
+  });
+});
+
+//________________________________________________
+// Attempting to use Sinon in PM imitation when using HTTP request
+
 describe("Stubbed - Sinon policy", function () {
   before(function () {
     // entry point of sinon, creating a sandbox
