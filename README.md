@@ -69,3 +69,24 @@ URL: https://javascript.info/fetch-api
 1. https://jasonwatmore.com/post/2021/10/09/fetch-error-handling-for-failed-http-responses-and-network-errors#:~:text=The%20fetch()%20function%20will,reject(error)%3B%20.
 2. https://dev.to/anchobies/when-that-s-not-so-fetch-error-handling-with-fetch-4cce
 3. https://medium.com/trabe/fetch-api-errors-and-the-principle-of-least-surprise-66bbba3e4cc2
+
+---
+
+### 3. Node Packages
+
+This folder is testing different node packages e.g. git diff
+
+1. [git-diff](https://www.npmjs.com/package/git-diff) = Quick string comparison checker. Requires git to be installed
+2. [diff](https://www.npmjs.com/package/diff) = Quick string comparison checker. "A javascript text differencing implementation." Git not required.
+
+---
+
+### 4. Unit testing
+
+This repo contains examples of using
+
+• [Mocha](https://mochajs.org/)
+
+• [Chai](https://www.chaijs.com/)
+
+• [Sinon](https://sinonjs.org/)
