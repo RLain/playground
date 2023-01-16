@@ -47,7 +47,7 @@ const uri = process.env.SANDBOX_URI;
 
 /*Fetch a policy from platform*/
 export const retrievePolicy = async (policy_id) => {
-  const response = await mainRootAPIRequest(
+  const response = await mainAPIRequest(
     uri + `/v1/insurance/policies/${policy_id}`,
     "GET",
     "", //Empty body
