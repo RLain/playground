@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 /**
- * Makes an API request to the root platform
+ * Makes an API request
  * @param {string} uri The uri where the request will be made
  * @param {string} method The type of request ['PUT','PATCH','GET', 'POST']
  * @param {string} data The request body
@@ -45,7 +45,7 @@ const mainAPIRequest = async (uri, method, data, api_key) => {
 const apiKey = process.env.API_KEY;
 const uri = process.env.SANDBOX_URI;
 
-/*Fetch a policy from platform*/
+/*Fetch a policy*/
 export const retrievePolicy = async (policy_id) => {
   const response = await mainAPIRequest(
     uri + `/v1/insurance/policies/${policy_id}`,
