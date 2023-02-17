@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 /**
- * Makes an API request to the root platform
+ * Makes an API request
  * @param {string} uri The uri where the request will be made
  * @param {string} method The type of request ['PUT','PATCH','GET', 'POST']
  * @param {string} data The request body

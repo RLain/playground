@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Personal playground",
   "main": "index.js",
+  "module": "es6",
   "scripts": {
     "test": "test"
   },
@@ -24,6 +25,7 @@
     "dotenv": "^16.0.3",
     "fetch": "^1.1.0",
     "git-diff": "^2.0.6",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "ts-node": "^10.9.1"
   }
 }
