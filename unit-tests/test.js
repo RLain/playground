@@ -10,7 +10,7 @@ dotenv.config();
  * @param {string} api_key Either a Sandbox or Production api key. Stored on a env.js file not saved on Github.
  * @return {object} The response from the API request
  */
-const mainAPIRequest = async (uri, method, data, api_key) => {
+export async function mainAPIRequest(uri, method, data, api_key) {
   let response;
   if (method === "GET") {
     response = await fetch(`${uri}`, {
@@ -40,13 +40,13 @@ const mainAPIRequest = async (uri, method, data, api_key) => {
   }
 
   return response;
-};
+}
 
-const apiKey = process.env.API_KEY;
-const uri = process.env.SANDBOX_URI;
+let apiKey = process.env.API_KEY;
+let uri = process.env.SANDBOX_URI;
 
 /*Fetch a policy from platform*/
-export const retrievePolicy = async (policy_id) => {
+export async function retrievePolicy(policy_id) {
   const response = await mainAPIRequest(
     uri + `/v1/insurance/policies/${policy_id}`,
     "GET",
@@ -54,4 +54,4 @@ export const retrievePolicy = async (policy_id) => {
     apiKey
   );
   return response;
-};
+}

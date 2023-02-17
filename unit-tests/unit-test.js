@@ -1,9 +1,8 @@
 import chai from "chai";
 import assert from "assert";
-import { retrievePolicy } from "./test.js";
+import { mainAPIRequest, retrievePolicy } from "./test.js";
 export const { expect } = chai;
 import sinon from "sinon";
-import request from "request";
 
 //________________________________________________
 // Basic Sinon testing: Stubbing date value
@@ -34,28 +33,13 @@ describe("testing the greeter", function () {
 //________________________________________________
 // Attempting to use Sinon in PM imitation when using HTTP request
 
+// Paused due to Sinon not working on Platform due to PM string conversion for VM.
+
 describe("Stubbed - Sinon policy", function () {
-  before(function () {
-    // entry point of sinon, creating a sandbox
-    let sandbox = sinon.createSandbox();
-    // restore all the stubs; remove all the existing stubs
-    sandbox.restore();
-  });
+  before(function () {});
   it("stubbed policy", async function () {
-    beforeEach(() => {
-      const responseObject = {
-        statusCode: 200,
-        headers: {
-          "content-type": "application/json",
-        },
-      };
-      const responseBody = {
-        status: "success",
-        data: [{ output: "This is a policy" }],
-      };
-      this.get = sinon.stub(request, "get");
-    });
-    // afterEach(() => {});
+    beforeEach(() => {});
+    afterEach(() => {});
   });
 });
 
@@ -69,3 +53,98 @@ describe("Not stubbed - Fetch policy", function () {
     assert.equal(policy.package_name, "Be Protected");
   });
 });
+
+/// Chat GPT - attempting to stub HTTP requests without using Sinon due to platform limitation
+
+// Example function that makes a request to an API endpoint
+function getDataFromApi() {
+  return fetch("https://ron-swanson-quotes.herokuapp.com/v2/quotes")
+    .then((response) => response.json())
+    .then((data) => data);
+}
+
+// Wrapper function that calls getDataFromApi
+function processData() {
+  return getDataFromApi().then((data) => {
+    // Process the data
+    return data;
+  });
+}
+
+describe("Chat GPT #2 - processData", function () {
+  let originalGetDataFromApi;
+
+  beforeEach(function () {
+    // Save a reference to the original function
+    originalGetDataFromApi = getDataFromApi;
+
+    // Create a stub function that returns a mock response object
+    const stubGetDataFromApi = () => {
+      return Promise.resolve({ data: "mocked data" });
+    };
+
+    // Replace the original function with the stub function
+    getDataFromApi = stubGetDataFromApi;
+  });
+
+  afterEach(function () {
+    // Restore the original function
+    getDataFromApi = originalGetDataFromApi;
+  });
+
+  it("should return the expected data", function () {
+    // Call the function and verify the result
+    return processData().then((data) => {
+      expect(data).to.deep.equal({ data: "mocked data" });
+    });
+  });
+});
+
+/* The above works */
+
+describe.only("Becca attempt - retrievePolicy", function () {
+  let originalGetDataFromApi;
+
+  beforeEach(function () {
+    // Save a reference to the original function
+    originalGetDataFromApi = mainAPIRequest;
+
+    // Create a stub function that returns a mock response object
+    const stubGetDataFromApi = () => {
+      return Promise.resolve({ data: "mocked data" });
+    };
+
+    // Replace the original function with the stub function
+    mainAPIRequest = stubGetDataFromApi;
+  });
+
+  afterEach(function () {
+    // Restore the original function
+    mainAPIRequest = originalGetDataFromApi;
+  });
+
+  it("should return the expected data", function () {
+    // Call the function and verify the result
+    return retrievePolicy().then((data) => {
+      expect(data).to.deep.equal({ data: "mocked data" });
+    });
+  });
+});
+
+/*
+The above fails:
+
+  2 failing
+
+  1) Becca attempt - retrievePolicy
+       "before each" hook for "should return the expected data":
+     TypeError: Assignment to constant variable.
+      at Context.<anonymous> (file:///Users/rebeccalain/Documents/coding-practise/playground/unit-tests/unit-test.js:114:20)
+      at process.processImmediate (node:internal/timers:471:21)
+
+  2) Becca attempt - retrievePolicy
+       "after each" hook for "should return the expected data":
+     TypeError: Assignment to constant variable.
+      at Context.<anonymous> (file:///Users/rebeccalain/Documents/coding-practise/playground/unit-tests/unit-test.js:119:20)
+      at process.processImmediate (node:internal/timers:471:21)
+*/
